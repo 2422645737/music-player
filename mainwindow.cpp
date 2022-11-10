@@ -29,7 +29,8 @@ void MainWindow::init()
     QStringList history = read_history();
 
     //设置播放列表
-    QString path = history.at(0);
+    QString path;
+    if(history.size() > 0) path = history.at(0);
     if(path != nullptr && path != ""){
         refresh_music_list(path);
         this->base_path = path;
@@ -71,7 +72,7 @@ QStringList MainWindow::read_history()
     QStringList history;
     QFile file("./history.txt");
     if(!file.open(QIODevice::ReadOnly)){
-        qDebug() << "创建记录失败";
+        qDebug() << "读取记录失败";
         return history;
     }
     while(!file.atEnd()){
