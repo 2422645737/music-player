@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui multimedia multimediawidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -19,11 +19,15 @@ SOURCES += \
     common.cpp \
     controller.cpp \
     main.cpp \
+    musicinfo.cpp \
+    musiclist.cpp \
     widget.cpp
 
 HEADERS += \
     common.h \
     controller.h \
+    musicinfo.h \
+    musiclist.h \
     widget.h
 
 # Default rules for deployment.
