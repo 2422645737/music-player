@@ -1,10 +1,19 @@
 #include "widget.h"
-#include "controller.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
-    initUI();
+    init();
+}
+
+void Widget::init()
+{
+    initUI();      //初始化界面
+    initConnect();   //初始化connect
+
+    //初始化工作
+    player = new QMediaPlayer;
+
 }
 
 void Widget::initUI()         //初始化界面功能
@@ -16,16 +25,35 @@ void Widget::initUI()         //初始化界面功能
     QGridLayout* mainLayout = new QGridLayout;
     this->setLayout(mainLayout);
 
-    //设置底部控制栏
-    Controller* controller = new Controller;
+    //歌曲详情
+    music_info_widget = new musicInfo;
+    music_info_widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);     //保证控件充满整个布局
+    mainLayout->addWidget(music_info_widget,0,0);
+
+    //播放列表
+    music_list_widget = new MusicList;
+    music_list_widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);
+    mainLayout->addWidget(music_list_widget,0,1);
+    //底部控制栏
+    controller = new Controller;
     controller->setMinimumHeight(80);
-    mainLayout->addWidget(controller,0,0,Qt::AlignBottom);   //放置于底部
+    controller->setMaximumHeight(80);
+    mainLayout->addWidget(controller,1,0,1,2,Qt::AlignBottom);   //放置于底部
+}
 
-
-
+void Widget::initConnect()
+{
+    connect(this->music_list_widget,&MusicList::music_changed,this,&Widget::music_changed);
 }
 
 Widget::~Widget()
 {
+}
+
+void Widget::music_changed(QString path)
+{
+    qDebug() << "音乐切换" << path;
+    this->player->setMedia(QUrl::fromLocalFile(path));
+    this->player->play();
 }
 
