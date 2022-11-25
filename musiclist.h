@@ -1,4 +1,4 @@
-#ifndef MUSICLIST_H
+﻿#ifndef MUSICLIST_H
 #define MUSICLIST_H
 
 #include <QWidget>
@@ -6,7 +6,6 @@
 #include <QTableWidgetItem>
 #include <QListWidget>
 #include <QTableWidget>
-//#include <QTableView>
 #include <QHeaderView>
 #include <QAbstractItemView>
 
@@ -15,7 +14,6 @@ class MusicList : public QWidget
     Q_OBJECT
 private:
     QMediaPlayer* player;
-//    QListWidget* list_widget;      //列表
     QTableWidget* list_widget;
     QPushButton* add_file_button;    //打开文件
     QPushButton* add_folder_button;   //打开文件夹
@@ -37,10 +35,11 @@ public:
 public slots:
     void addFile();
     void addFolder();
+    void switchMusic(int row,int columu);    //用户双击列表切换时间
 
 signals:
-    void music_changed(QString path);
     void meta_changed(QString path);
+    void music_changed(QString path);    //用户双击列表切换时间
 };
 
 #endif // MUSICLIST_H

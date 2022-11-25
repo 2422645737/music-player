@@ -1,4 +1,4 @@
-#ifndef CONTROLLER_H
+﻿#ifndef CONTROLLER_H
 #define CONTROLLER_H
 
 #include <QWidget>
@@ -12,7 +12,7 @@ private:
     void init();        //初始化
     void initUI();       //初始化界面
 public:
-    explicit Controller(QWidget *parent = nullptr);
+    explicit Controller(QWidget* parent = nullptr);
 
 signals:
 

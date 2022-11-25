@@ -7,3 +7,4 @@ release/
 *.stash
 *.vcxproj
 *.filters
+*.sln

@@ -1,4 +1,4 @@
-#include "controller.h"
+﻿#include "controller.h"
 
 Controller::Controller(QWidget *parent) : QWidget(parent)
 {
@@ -34,10 +34,11 @@ void Controller::initUI()
 
     QHBoxLayout* h_layout = new QHBoxLayout;
     h_layout->addWidget(play_way_button);
-    h_layout->addWidget(prev_button);
+    h_layout->addWidget(prev_button); 
     h_layout->addWidget(play_button);
     h_layout->addWidget(next_button);
     h_layout->addWidget(volume_button);
+
 
     QProgressBar* progress_bar = new QProgressBar;
     QLabel* spend_time_label = new QLabel("经过时间");  //经过的时间
@@ -52,4 +53,3 @@ void Controller::initUI()
     mainLayout->addItem(h_layout);
     this->setLayout(mainLayout);
 }
-
