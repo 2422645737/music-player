@@ -1,3 +1,7 @@
+#ifdef WIN32  
+#pragma execution_character_set("utf-8")  
+#endif
+
 #include "widget.h"
 
 #include <QApplication>
@@ -8,4 +12,5 @@ int main(int argc, char *argv[])
     Widget w;
     w.show();
     return a.exec();
+//
 }

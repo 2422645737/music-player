@@ -1,5 +1,9 @@
 #ifndef COMMON_H
 #define COMMON_H
+/*解决转移到vs中乱码问题*/
+#ifdef WIN32  
+#pragma execution_character_set("utf-8")  
+#endif
 
 #include <QPushButton>
 #include <QGridLayout>
@@ -7,7 +11,7 @@
 #include <QLabel>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
-#include <QDir>
+#include <QDir> 
 #include <QUrl>
 #include <QThread>
 #include <QTime>

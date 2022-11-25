@@ -1,4 +1,4 @@
-#include "musiclist.h"
+﻿#include "musiclist.h"
 
 MusicList::MusicList(QWidget *parent) : QWidget(parent)
 {
@@ -25,7 +25,9 @@ void MusicList::initUI()
     this->list_widget->verticalHeader()->setVisible(false);         //隐藏行号
     this->list_widget->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);         //行自动拉伸长度
     this->list_widget->setSelectionBehavior(QTableWidget::SelectRows);       //设置一次只能选中一行
-    list_widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);     //保证控件充满整个布局
+    this->list_widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);     //保证控件充满整个布局
+    this->list_widget->setEditTriggers(QAbstractItemView::NoEditTriggers);         //设置列表内容不可修改
+
 
     QStringList name;
     name.append("序号");
@@ -53,15 +55,16 @@ void MusicList::initUI()
 
 void MusicList::initConnect()
 {
-    connect(this->add_file_button,&QPushButton::clicked,this,&MusicList::addFile);        //添加文件
-    connect(this->add_folder_button,&QPushButton::clicked,this,&MusicList::addFolder);        //添加文件夹
-    connect(this->player,&QMediaPlayer::metaDataAvailableChanged,this,[&](bool available){
+    connect(this->player,&QMediaPlayer::metaDataAvailableChanged,this,[&](bool available){    //用来处理player媒体改变的相应
         if(available){
             this->music.duration = player->duration();
             music_list->replace(music_list->size() - 1,this->music);
             refresh_list();
         }
     });
+    connect(this->add_file_button,&QPushButton::clicked,this,&MusicList::addFile);        //添加文件
+    connect(this->add_folder_button,&QPushButton::clicked,this,&MusicList::addFolder);        //添加文件夹
+    connect(this->list_widget,&QTableWidget::cellDoubleClicked,this,&MusicList::switchMusic);
 }
 
 
@@ -135,8 +138,7 @@ void MusicList::addFolder()
        QString current_path = path + "/" +  *it;         //获取当前文件夹下音频文件的完整路径
        bool flag = false;
        for(auto i = this->music_list->begin();i != this->music_list->end();i++){
-           if(current_path == i->path){
-               //发现重复
+           if(current_path == i->path){        //发现重复
                flag  = true;
                break;
            }
@@ -147,4 +149,14 @@ void MusicList::addFolder()
            //do nothing
        }
    }
+}
+
+void MusicList::switchMusic(int row,int column)
+{
+    //我只要行
+    //这里保证list_widget和music_list中的内容严格对应，所以只需要根据行号找到对应的歌曲即可
+    Music m = this->music_list->at(row);
+    print_music(m);
+
+
 }
