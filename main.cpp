@@ -12,5 +12,5 @@ int main(int argc, char *argv[])
     Widget w;
     w.show();
     return a.exec();
-//
+    //main中添加了一行注释
 }
