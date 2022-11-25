@@ -1,9 +1,10 @@
-#ifdef WIN32  
+Ôªø#ifdef WIN32  
 #pragma execution_character_set("utf-8")  
 #endif
 
 #include "widget.h"
 
+#include <QDebug>
 #include <QApplication>
 
 int main(int argc, char *argv[])
@@ -11,6 +12,6 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     Widget w;
     w.show();
+
     return a.exec();
-    //main÷–ÃÌº”¡À“ª––◊¢ Õ
 }

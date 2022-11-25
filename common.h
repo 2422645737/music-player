@@ -1,9 +1,19 @@
-#ifndef COMMON_H
+﻿#ifndef COMMON_H
 #define COMMON_H
 /*解决转移到vs中乱码问题*/
 #ifdef WIN32  
 #pragma execution_character_set("utf-8")  
 #endif
+
+extern "C"{
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libavdevice/avdevice.h>
+#include <libswscale/swscale.h>
+#include <libswresample/swresample.h>
+#include <libavutil/adler32.h>
+#include <libavfilter/avfilter.h>
+}
 
 #include <QPushButton>
 #include <QGridLayout>

@@ -10,8 +10,6 @@ void MusicList::init()
     player = new QMediaPlayer(this);
     music_list = new QVector<Music>;
     initUI();
-
-    //初始化工作
     initConnect();
 }
 

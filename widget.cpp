@@ -1,9 +1,11 @@
-#include "widget.h"
+﻿#include "widget.h"
 
 Widget::Widget(QWidget *parent)
     : QWidget(parent)
 {
     init();
+    avdevice_register_all();
+    qDebug() << "ffmpeg版本号:" << avcodec_version();
 }
 
 void Widget::init()
