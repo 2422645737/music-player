@@ -1,0 +1,9 @@
+# 忽略文件夹
+debug/
+release/
+.vs/
+
+*.user
+*.stash
+*.vcxproj
+*.filters

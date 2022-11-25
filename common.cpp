@@ -16,3 +16,14 @@ void print_music(Music music)
     qDebug() << "音乐后缀：" << music.suffix;
     qDebug() << "音乐时长：" << music.duration;
 }
+
+
+void print_list(QVector<Music>* list)
+{
+    qDebug() << "*****************************************************************************";
+    for(auto it = list->begin();it != list->end();it++){
+        qDebug() << "---------------" <<   it - list->begin() << "--------------------";
+        print_music(*it);
+    }
+    qDebug() << "*****************************************************************************";
+}
