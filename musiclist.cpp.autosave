@@ -25,8 +25,6 @@ void MusicList::initUI()
     this->list_widget->setSizePolicy(QSizePolicy::Expanding,QSizePolicy::Expanding);     //保证控件充满整个布局
     this->list_widget->setEditTriggers(QAbstractItemView::NoEditTriggers);         //设置列表内容不可修改
 
-    //设置歌曲右键菜单
-    this->pop_menu = new QMenu(this->list_widget);
 
     QStringList name;
     name.append("序号");
@@ -57,9 +55,6 @@ void MusicList::initConnect()
 	connect(this->add_file_button, &QPushButton::clicked, this, &MusicList::addFile);        //添加文件
 	connect(this->add_folder_button, &QPushButton::clicked, this, &MusicList::addFolder);        //添加文件夹
     connect(this->list_widget, &QTableWidget::cellDoubleClicked, this, &MusicList::switchMusic);
-    connect(this->list_widget,&QTableWidget::customContextMenuRequested,this,[=](const QPoint& pos){
-
-    });
 }
 
 

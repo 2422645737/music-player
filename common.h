@@ -26,9 +26,13 @@ extern "C"{
 #include <QThread>
 #include <QTime>
 #include <QStringList>
+#include <QPoint>
+#include <QCursor>
 #include <QMediaPlaylist>
 #include <QMessageBox>
 #include <QDebug>
+#include <QMenu>
+#include <QAction>
 #include <QFileDialog>
 #include <QPalette>
 #include <QVector>

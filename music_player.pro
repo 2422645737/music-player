@@ -27,6 +27,7 @@ LIBS += $$PWD/lib/avdevice.lib \
 SOURCES += \
     common.cpp \
     controller.cpp \
+    customtablewidget.cpp \
     main.cpp \
     musicinfo.cpp \
     musiclist.cpp \
@@ -35,6 +36,7 @@ SOURCES += \
 HEADERS += \
     common.h \
     controller.h \
+    customtablewidget.h \
     musicinfo.h \
     musiclist.h \
     widget.h
